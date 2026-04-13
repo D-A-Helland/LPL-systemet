@@ -1,5 +1,5 @@
 <template>
   <UContainer>
-    <h1>Velkommen til LPL-Systemet!</h1>
+    <h2 class="text-lg font-bold">Velkommen til LPL-Systemet!</h2>
   </UContainer>
 </template>
