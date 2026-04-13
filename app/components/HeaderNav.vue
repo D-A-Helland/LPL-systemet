@@ -6,7 +6,7 @@
     <nav>
       <a href="/"><UButton>Hjem</UButton></a>
     </nav>
-    <template>
+    <template #right>
       <UColorModeButton />
     </template>
   </UHeader>
