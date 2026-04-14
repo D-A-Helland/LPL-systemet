@@ -4,6 +4,7 @@
 
         <form @submit.prevent="createUser">
             <input v-model="form.navn" placeholder="Name" />
+            <input v-model="form.tlf" placeholder="Tlf">
             <input v-model="form.epost" placeholder="Email" />
             <input v-model="form.password" type="password" placeholder="Password" />
             <select v-model="form.lag_id">
@@ -23,6 +24,7 @@
 
 const form = ref({
   navn: '',
+  tlf: '',
   epost: '',
   password: ''
 })
@@ -41,6 +43,7 @@ const createUser = async () => {
     // clear form
     form.value = {
       navn: '',
+      tlf: '',
       epost: '',
       password: ''
     }
