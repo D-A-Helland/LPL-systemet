@@ -5,7 +5,7 @@ import { type NavigationMenuItem } from '@nuxt/ui'
 const links = ref<NavigationMenuItem[][]>([
   [
     { label: 'Hjem', to: '/' },
-    { label: 'Hjem2', to: '/hemmelig' },
+    { label: 'Om oss', to: '/about' },
   ],
 ])
 </script>
