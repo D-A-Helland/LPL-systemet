@@ -24,5 +24,11 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+  nitro: {
+    externals: {
+      inline: ['bcryptjs']
+    }
   }
+
 })
