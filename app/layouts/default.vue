@@ -5,7 +5,7 @@ import HeaderNav from '~/components/HeaderNav.vue'
 <template>
   <div>
     <HeaderNav />
-    <main>
+    <main class="my-5">
       <slot />
     </main>
   </div>
