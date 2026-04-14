@@ -1,6 +1,4 @@
 <template>
-    <h1>Admin side</h1>
-
     <div class="lag-container" v-for="(spillere, lag) in grouped" :key="lag">
         <div class="lag-card">
             <h2>{{ lag }}</h2>
@@ -33,6 +31,7 @@ const grouped = spillere.value.reduce((acc, spiller) => {
     border-color: white;
     border-width: 1px;
     border-radius: 5px;
+    margin: 25px;
 }
 .lag-card ul{
     display: flex;
