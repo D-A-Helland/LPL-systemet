@@ -1,35 +1,55 @@
 <script setup lang="ts">
-const links = [
-  { label: 'Hjem', to: '/' },
-  { label: 'Hjem2', to: '/' },
-]
+import { ref } from 'vue'
+import { type NavigationMenuItem } from '@nuxt/ui'
+
+const links = ref<NavigationMenuItem[][]>([
+  [
+    { label: 'Hjem', to: '/' },
+    { label: 'Hjem2', to: '/hemmelig' },
+  ],
+])
 </script>
 
 <template>
-  <UHeader>
+  <UHeader class="h-24">
     <template #title>
-      <h1 class="text-2xl font-bold">LPL-Systemet</h1>
+      <img
+        src="/images/LPL-logo-hvit.png"
+        alt="LPL-Systemet"
+        :ui="{
+          alt: 'text-2xl font-bold',
+        }"
+        class="h-20 hidden dark:block"
+      />
+      <img
+        src="/images/LPL-logo-svart.png"
+        alt="LPL-Systemet"
+        :ui="{
+          alt: 'text-2xl font-bold',
+        }"
+        class="h-20 dark:hidden"
+      />
     </template>
 
-    <nav class="hidden lg:flex gap-4">
-      <UButton
-        v-for="link in links"
-        :key="link.to"
-        :to="link.to"
-      >
-        {{ link.label }}
-      </UButton>
-    </nav>
-
+    <template #default>
+      <UNavigationMenu
+        color="neutral"
+        variant="pill"
+        :items="links"
+        :ui="{
+          link: 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition',
+        }"
+      />
+    </template>
     <template #body>
-      <UButton
-        v-for="link in links"
-        :key="link.to"
-        :to="link.to"
-        class="mr-4"
-      >
-        {{ link.label }}
-      </UButton>
+      <UNavigationMenu
+        color="neutral"
+        variant="pill"
+        :items="links"
+        :ui="{
+          link: 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition',
+        }"
+      />
     </template>
     <template #right>
       <UColorModeButton />
