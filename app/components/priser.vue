@@ -10,17 +10,21 @@
     </div>
 </template>
 <script setup>
+import { computed } from 'vue'
+
 const { data: spillere, error } = await useFetch('/api/players');
 
-const grouped = spillere.value.reduce((acc, spiller) => {
-  const lag = spiller.lagnavn || 'No lag'
+const grouped = computed(() => {
+  return (spillere.value || []).reduce((acc, spiller) => {
+    const lag = spiller.lagnavn || 'No lag'
 
-  if (!acc[lag]) acc[lag] = []
+    if (!acc[lag]) acc[lag] = []
 
-  acc[lag].push(spiller)
+    acc[lag].push(spiller)
 
-  return acc
-}, {})
+    return acc
+  }, {})
+})
 </script>
 <style>
 .lag-container {
