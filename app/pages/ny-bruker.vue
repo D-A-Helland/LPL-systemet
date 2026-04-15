@@ -6,7 +6,6 @@ const form = ref({
   tlf: '',
   epost: '',
   password: '',
-  lag_id: null,
 })
 
 const message = ref('')
@@ -26,7 +25,6 @@ const createUser = async () => {
       tlf: '',
       epost: '',
       password: '',
-      lag_id: null,
     }
   } catch (err) {
     message.value = err.data?.statusMessage || 'Error'
@@ -80,6 +78,21 @@ const createUser = async () => {
               icon="i-lucide-lock"
               class="w-84"
             />
+          </UFormField>
+
+          <UFormField label="Lag">
+            <select
+              v-model="form.lag_id"
+              class="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary-500 transition"
+            >
+              <option
+                v-for="lag in lagList"
+                :key="lag.id"
+                :value="lag.id"
+              >
+                {{ lag.navn }}
+              </option>
+            </select>
           </UFormField>
 
           <UButton
