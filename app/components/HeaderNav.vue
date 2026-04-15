@@ -7,6 +7,7 @@ const links = ref<NavigationMenuItem[][]>([
     { label: 'Hjem', to: '/' },
     { label: 'Om oss', to: '/about' },
     { label: 'Login', to: '/login' },
+    { label: 'Ny bruker', to: '/ny-bruker' },
   ],
 ])
 </script>

@@ -24,9 +24,9 @@ const users = [
 </script>
 
 <template>
-  <UContainer>
+  <UContainer class="flex flex-col justify-center items-center min-h-[70vh]">
     <h1 class="text-2xl font-bold text-center">Teamet som står bak LPL systemet.</h1>
-    <div class="flex *:w-xl mt-5">
+    <div class="flex *:w-xl mt-5 gap-4">
       <ProfileCard
         v-for="user in users"
         :user="user"
