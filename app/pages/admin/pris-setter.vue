@@ -7,7 +7,7 @@ const message = ref('')
 
 const submit = async () => {
   try {
-    await $fetch('~/../server/api/admin/set-price', {
+    await $fetch('/api/admin/pris-setter', {
       method: 'POST',
       body: {
         spiller_id: selectedPlayer.value,
