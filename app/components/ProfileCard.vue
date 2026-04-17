@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <UCard class="max-w-sm mx-auto">
+  <UCard class="max-w-sm mx-auto hover:scale-105 transition">
     <div class="flex flex-col items-center text-center gap-4">
       <UAvatar
         :src="user.avatar"

@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { type NavigationMenuItem } from '@nuxt/ui'
 
-const links = ref<NavigationMenuItem[][]>([
+const { data: user } = await useFetch('/api/me')
+
+const links = computed<NavigationMenuItem[][]>(() => [
   [
     { label: 'Hjem', to: '/' },
     { label: 'Om oss', to: '/about' },
-    { label: 'Login', to: '/login' },
-    { label: 'Ny bruker', to: '/ny-bruker' },
-  ],
+
+    !user.value && { label: 'Login', to: '/login' },
+    !user.value && { label: 'Ny bruker', to: '/ny-bruker' },
+
+    user.value && { label: 'Dashbord', to: '/dashboard' },
+    user.value && { label: 'Logg ut', to: '/logout' },
+  ].filter(Boolean) as NavigationMenuItem[],
 ])
 </script>
 
