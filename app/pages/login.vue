@@ -78,10 +78,11 @@ const login = async () => {
     await $fetch('/api/login', {
       method: 'POST',
       body: form.value,
+      credentials: 'include',
     })
 
-    // redirect after login
-    await navigateTo('/')
+    await navigateTo('/', { external: true })
+    await refreshNuxtDatau('me')
   } catch (err) {
     console.log(err)
     error.value = err.data?.statusMessage || 'Wrong email or password'
