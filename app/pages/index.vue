@@ -17,5 +17,6 @@ const { data: user } = await useFetch('/api/me')
       Velkommen til LPL-Systemet!
     </h1>
     <Priser />
+    <h1 class="text-2xl font-bold">{{ user?.navn }}</h1>
   </UContainer>
 </template>
