@@ -1,0 +1,23 @@
+import { prisma } from '../../utils/prisma'
+
+export default defineEventHandler(async (event) => {
+  const id = Number(getRouterParam(event, 'id'))
+
+  const user = await prisma.brukere.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      navn: true,
+      // add fields you want to show
+    },
+  })
+
+  if (!user) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'User not found',
+    })
+  }
+
+  return user
+})

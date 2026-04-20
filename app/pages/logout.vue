@@ -1,9 +1,11 @@
 <script setup lang="ts">
 await $fetch('/api/logout', {
   method: 'POST',
+  credentials: 'include'
 })
 
 await navigateTo('/')
+await refreshNuxtData('me')
 </script>
 
 <template>
