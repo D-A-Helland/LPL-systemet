@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     externals: {
       inline: ['bcryptjs']
     }
-  }
+  },
 
+  srcDir: 'app/'
 })
