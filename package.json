@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "prisma generate",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck"
   },
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
+    "@types/node": "^25.6.0",
     "eslint": "^10.2.0",
     "prisma": "^5.22.0",
     "typescript": "^6.0.2",
