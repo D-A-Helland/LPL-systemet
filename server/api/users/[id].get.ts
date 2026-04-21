@@ -1,6 +1,7 @@
 import { prisma } from '../../utils/prisma'
+import type { H3Event } from 'h3'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event) => {
   const id = Number(getRouterParam(event, 'id'))
 
   const user = await prisma.brukere.findUnique({
