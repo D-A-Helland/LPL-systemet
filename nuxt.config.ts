@@ -27,7 +27,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     externals: {
-      inline: ['bcryptjs']
+      inline: ['bcryptjs'],
+      external: ['@prisma/client', '.prisma/client']
     }
   }
 
