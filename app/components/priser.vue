@@ -10,10 +10,14 @@
         <div
           v-for="spiller in spillere"
           :key="spiller.epost"
-          class="grid grid-cols-[1fr_auto] justify-start items-center gap-4 max-w-sm p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
         >
-          <span class="font-medium">{{ spiller.navn }}</span>
-          <span class="text-slate-500">{{ spiller.pris }} kr</span>
+          <NuxtLink
+            :to="`/profile/${spiller.id}`"
+            class="grid grid-cols-[1fr_auto] justify-start items-center gap-4 max-w-sm p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          >
+            <span class="font-medium">{{ spiller.navn }}</span>
+            <span class="text-slate-500">{{ spiller.pris }} kr</span>
+          </NuxtLink>
         </div>
       </div>
     </UCard>
