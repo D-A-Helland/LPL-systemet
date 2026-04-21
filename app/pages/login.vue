@@ -81,7 +81,7 @@ const login = async () => {
     })
 
     // redirect after login
-    await navigateTo('/')
+    await navigateTo('/', { external: true })
   } catch (err) {
     console.log(err)
     error.value = err.data?.statusMessage || 'Wrong email or password'

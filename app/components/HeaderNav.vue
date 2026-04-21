@@ -2,7 +2,10 @@
 import { computed } from 'vue'
 import { type NavigationMenuItem } from '@nuxt/ui'
 
-const { data: user } = await useFetch('/api/me')
+const { data: user } = await useFetch('/api/me', {
+  key: 'me',
+  credentials: 'include',
+})
 
 const links = computed<NavigationMenuItem[][]>(() => [
   [
@@ -13,6 +16,7 @@ const links = computed<NavigationMenuItem[][]>(() => [
     !user.value && { label: 'Ny bruker', to: '/ny-bruker' },
 
     user.value && { label: 'Dashbord', to: '/dashboard' },
+    user.value && { label: 'Profil', to: `/profile/${user.value.id}` },
     user.value && { label: 'Logg ut', to: '/logout' },
   ].filter(Boolean) as NavigationMenuItem[],
 ])
@@ -21,22 +25,24 @@ const links = computed<NavigationMenuItem[][]>(() => [
 <template>
   <UHeader class="h-24">
     <template #title>
-      <img
-        src="/images/LPL-logo-hvit.png"
-        alt="LPL-Systemet"
-        :ui="{
-          alt: 'text-2xl font-bold',
-        }"
-        class="h-20 hidden dark:block"
-      />
-      <img
-        src="/images/LPL-logo-svart.png"
-        alt="LPL-Systemet"
-        :ui="{
-          alt: 'text-2xl font-bold',
-        }"
-        class="h-20 dark:hidden"
-      />
+      <a href="/">
+        <img
+          src="/images/LPL-logo-hvit.png"
+          alt="LPL-Systemet"
+          :ui="{
+            alt: 'text-2xl font-bold',
+          }"
+          class="h-20 hidden dark:block"
+        />
+        <img
+          src="/images/LPL-logo-svart.png"
+          alt="LPL-Systemet"
+          :ui="{
+            alt: 'text-2xl font-bold',
+          }"
+          class="h-20 dark:hidden"
+        />
+      </a>
     </template>
 
     <template #default>

@@ -4,6 +4,7 @@ await $fetch('/api/logout', {
 })
 
 await navigateTo('/')
+await refreshNuxtData('me')
 </script>
 
 <template>
