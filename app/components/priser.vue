@@ -9,7 +9,7 @@
       <div class="space-y-2">
         <div
           v-for="spiller in spillere"
-          :key="spiller.epost"
+          :key="spiller.id" 
         >
           <NuxtLink
             :to="`/profile/${spiller.id}`"
@@ -27,13 +27,26 @@
 <script setup>
 import { computed } from 'vue'
 
-const { data: spillere, error } = await useFetch('/api/players')
+// We provide a unique key ('player-list') to ensure Nuxt tracks 
+// this specific data fetch across route navigations.
+const { data: spillereRaw } = await useFetch('/api/players', {
+  key: 'player-list'
+})
 
 const grouped = computed(() => {
-  return (spillere.value || []).reduce((acc, spiller) => {
+  // Ensure we have an array to work with, even if data is loading or null
+  const allPlayers = Array.isArray(spillereRaw.value) ? spillereRaw.value : []
+
+  return allPlayers.reduce((acc, spiller) => {
+    // If for some reason a record is missing an ID, we skip it 
+    // to prevent broken links
+    if (!spiller.id) return acc
+
     const lag = spiller.lagnavn || 'No lag'
 
-    if (!acc[lag]) acc[lag] = []
+    if (!acc[lag]) {
+      acc[lag] = []
+    }
 
     acc[lag].push(spiller)
 
@@ -41,22 +54,3 @@ const grouped = computed(() => {
   }, {})
 })
 </script>
-<style>
-.lag-container {
-  display: grid;
-  grid-template-columns: 3;
-}
-.lag-card {
-  border-color: white;
-  border-width: 1px;
-  border-radius: 5px;
-  margin: 25px;
-}
-.lag-card ul {
-  display: flex;
-  flex-direction: row;
-}
-.lag-card ul li {
-  margin: 15px;
-}
-</style>
