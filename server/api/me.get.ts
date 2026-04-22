@@ -14,4 +14,6 @@ export default defineEventHandler(async (event) => {
             rolle: true
         }
     })
+
+    return user
 })
