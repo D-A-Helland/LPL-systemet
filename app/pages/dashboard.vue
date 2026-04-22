@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const isAdmin = true
-
 const { data: user } = await useFetch('/api/me')
 
 const items = computed(() =>
@@ -23,7 +21,7 @@ const items = computed(() =>
       icon: 'i-heroicons-chart-bar',
       to: '/statistics',
     },
-    isAdmin && {
+    user.value?.rolle == 'admin' && {
       title: 'Admin',
       description: 'Kun synlig for admin brukere',
       icon: 'i-heroicons-users',

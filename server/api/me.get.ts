@@ -10,7 +10,8 @@ export default defineEventHandler(async (event) => {
         select: {
             id: true,
             navn: true,
-            epost: true
+            epost: true,
+            rolle: true
         }
     })
 
