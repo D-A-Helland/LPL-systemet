@@ -23,7 +23,6 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 401, statusMessage: 'Invalid credentials' })
     }
 
-    // ✅ create session (cookie)
     setCookie(event, 'userId', String(user.id), {
         httpOnly: true,
         sameSite: 'strict',
