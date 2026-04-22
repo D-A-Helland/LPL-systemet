@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
     if (!userId) return null
 
-    const user = await prisma.brukere.findUnique({
+    return await prisma.brukere.findUnique({
         where: { id: Number(userId) },
         select: {
             id: true,

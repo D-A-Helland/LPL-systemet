@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
         httpOnly: true,
         sameSite: 'strict',
         path: '/',
-        maxAge: 60 * 60 * 24 * 7 // 7 days
+        maxAge: 60 * 60 * 24 * 7
     })
 
     return { message: 'Logged in' }
