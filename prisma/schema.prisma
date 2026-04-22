@@ -46,6 +46,7 @@ model lag {
   id                 Int                  @id @default(autoincrement())
   navn               String
   klasse             String
+  saldo              Int?                 @default(300000)
   kamp_oppstillinger kamp_oppstillinger[]
   spillere           spillere[]
 }
@@ -79,7 +80,7 @@ model spiller_oppstillinger {
 
 model spiller_priser {
   id         Int       @id @default(autoincrement())
-  pris       Int
+  pris       Int       @default(20000)
   created_at DateTime? @default(now()) @db.Timestamp(6)
   spiller_id Int
   spillere   spillere  @relation(fields: [spiller_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "spiller_pris")
