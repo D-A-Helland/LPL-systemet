@@ -4,6 +4,3 @@
     <priser />
   </UContainer>
 </template>
-<script>
-
-</script>
