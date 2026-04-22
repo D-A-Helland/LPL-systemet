@@ -3,8 +3,7 @@ await $fetch('/api/logout', {
   method: 'POST',
 })
 
-await navigateTo('/')
-await refreshNuxtData('me')
+await navigateTo('/', { external: true })
 </script>
 
 <template>

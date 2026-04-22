@@ -2,10 +2,7 @@
 import { computed } from 'vue'
 import { type NavigationMenuItem } from '@nuxt/ui'
 
-const { data: user } = await useFetch('/api/me', {
-  key: 'me',
-  credentials: 'include',
-})
+const { data: user } = await useFetch('/api/me')
 
 const links = computed<NavigationMenuItem[][]>(() => [
   [
@@ -18,6 +15,8 @@ const links = computed<NavigationMenuItem[][]>(() => [
     user.value && { label: 'Dashbord', to: '/dashboard' },
     user.value && { label: 'Profil', to: `/profile/${user.value.id}` },
     user.value && { label: 'Logg ut', to: '/logout' },
+
+    user.value && { label: 'Admin', to: '/admin' },
   ].filter(Boolean) as NavigationMenuItem[],
 ])
 </script>
