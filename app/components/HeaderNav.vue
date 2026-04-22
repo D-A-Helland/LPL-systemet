@@ -15,8 +15,6 @@ const links = computed<NavigationMenuItem[][]>(() => [
     user.value && { label: 'Dashbord', to: '/dashboard' },
     user.value && { label: 'Profil', to: `/profile/${user.value.id}` },
     user.value && { label: 'Logg ut', to: '/logout' },
-
-    user.value && { label: 'Admin', to: '/admin' },
   ].filter(Boolean) as NavigationMenuItem[],
 ])
 </script>
