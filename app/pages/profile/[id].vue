@@ -16,7 +16,7 @@ const { data: user, error } = await useAsyncData(`user-${id.value}`, () =>
       v-else-if="user"
       class="text-center w-3xl"
     >
-      <h1 class="text-2xl font-bold">{{ user.navn }}</h1>
+      <h1 class="text-2xl font-bold">User navn</h1>
     </UCard>
 
     <div v-else>Loading...</div>
