@@ -17,6 +17,7 @@ const submit = async () => {
 
     message.value = 'Price updated!'
   } catch (e) {
+    console.error(e)
     message.value = 'Error updating price'
   }
 }
@@ -33,7 +34,7 @@ const submit = async () => {
         :key="p.id"
         :value="p.id"
       >
-        {{ p.id }} - {{ p.lag?.navn }}
+        {{ p.navn }} - {{ p.lag?.navn }}
       </option>
     </select>
 
