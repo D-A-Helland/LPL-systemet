@@ -1,8 +1,8 @@
 import { prisma } from '../utils/prisma'
 
 export default defineEventHandler(async () => {
-    return await prisma.$queryRaw`
-    SELECT b.navn,s.ganger_solgt,l.navn AS lagnavn,sp.pris FROM brukere AS b
+  return await prisma.$queryRaw`
+    SELECT s.id b.navn,s.ganger_solgt,l.navn AS lagnavn,sp.pris FROM brukere AS b
     INNER JOIN spillere AS s ON b.spiller_id = s.id
     INNER JOIN "lag" AS l ON s.lag_id = l.id
         LEFT JOIN LATERAL (
