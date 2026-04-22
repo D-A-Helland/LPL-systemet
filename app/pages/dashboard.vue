@@ -1,32 +1,36 @@
 <script setup lang="ts">
+const isAdmin = true
+
 const { data: user } = await useFetch('/api/me')
 
-const items = [
-  {
-    title: 'Kamper',
-    description: 'Se oversikt over kamper',
-    icon: 'i-heroicons-flag',
-    to: '/matches',
-  },
-  {
-    title: 'Lag',
-    description: 'Se en oversikt over alle lagene',
-    icon: 'i-heroicons-user-group',
-    to: '/teams',
-  },
-  {
-    title: 'Statistikk',
-    description: 'Se rapporter og statistikk',
-    icon: 'i-heroicons-chart-bar',
-    to: '/statistics',
-  },
-  {
-    title: 'Admin',
-    description: 'Kun synlig for admin brukere',
-    icon: 'i-heroicons-users',
-    to: '/admin',
-  },
-]
+const items = computed(() =>
+  [
+    {
+      title: 'Kamper',
+      description: 'Se oversikt over kamper',
+      icon: 'i-heroicons-flag',
+      to: '/matches',
+    },
+    {
+      title: 'Lag',
+      description: 'Se en oversikt over alle lagene',
+      icon: 'i-heroicons-user-group',
+      to: '/teams',
+    },
+    {
+      title: 'Statistikk',
+      description: 'Se rapporter og statistikk',
+      icon: 'i-heroicons-chart-bar',
+      to: '/statistics',
+    },
+    isAdmin && {
+      title: 'Admin',
+      description: 'Kun synlig for admin brukere',
+      icon: 'i-heroicons-users',
+      to: '/admin',
+    },
+  ].filter(Boolean),
+)
 </script>
 
 <template>
