@@ -24,4 +24,3 @@ Hvis vi hadde dratt ned en ny versjon fra git var det noen ganger at prisma moto
 
 Noen ganger klarte vi aldri å finne feilen, og da var vi nødt til å gå tilbake til en fungerende versjon med git og fortsette med den istedenfor.
 
-
