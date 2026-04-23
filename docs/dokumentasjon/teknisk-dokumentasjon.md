@@ -4,6 +4,10 @@
 
 ### Formål
 
+Programmet er laget for at det skal bli lettere å administrere og holde oversikt over Lundeneset Premiere League. 
+
+Før har man holdt styr på det med flere store excel ark, men med dette programmet skal man kunne selge og kjøpe spillere fra hverandre, holde oversikt over og administrere spillere, lag, kamper og priser.
+
 ### Teknologistack
 
 #### Frontend
@@ -25,6 +29,6 @@ ORM: Prisma
 
 #### Verktøy
 
-Pakkehåndtering: pnpm
+Pakkehåndtering: npm
 Versjonskontroll: Git
 Linting: ESLint
