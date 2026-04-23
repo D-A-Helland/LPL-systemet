@@ -1,4 +1,6 @@
 <script setup>
+import Tilbake from '~/components/Tilbake.vue'
+
 const { data: players } = await useFetch('/api/players')
 
 const selectedPlayer = ref(null)
@@ -15,7 +17,7 @@ const submit = async () => {
       }
     })
 
-    message.value = 'Price updated!'
+    message.value = 'Pris oppdatert!'
   } catch (e) {
     console.error(e)
     message.value = 'Error updating price'
@@ -26,6 +28,7 @@ const submit = async () => {
 <template>
   <div>
     <h1>Set Player Price</h1>
+    <Tilbake :to="`/admin`" />
 
     <select v-model="selectedPlayer">
       <option disabled value="">Select player</option>
@@ -41,10 +44,10 @@ const submit = async () => {
     <input
       type="number"
       v-model="price"
-      placeholder="Enter price"
+      placeholder="Skriv inn pris!"
     />
 
-    <button @click="submit">Set Price</button>
+    <button @click="submit">Sett pris!</button>
 
     <p>{{ message }}</p>
   </div>
