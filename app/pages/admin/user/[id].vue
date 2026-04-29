@@ -2,23 +2,28 @@
   <UContainer>
     <Tilbake :to="'/admin/users'" />
     <div v-if="error">User not found</div>
-    <div v-else-if="user">
-      <ProfileCard
+    <div
+      v-else-if="user"
+      class="flex flex-col justify-center"
+    >
+      <ProfileEditCard
         :user="{
           name: user.navn,
           email: user.epost,
-          phone: user.tlf,
+          phone:user.tlf,
           avatar: pravatar,
           role: user.rolle,
         }"
+        :button="`Oppdater bruker`"
       />
+      <p>{{ user }}</p>
     </div>
     <div v-else>Loading...</div>
   </UContainer>
 </template>
 
 <script setup lang="ts">
-import ProfileCard from '~/components/ProfileCard.vue'
+import ProfileEditCard from '~/components/ProfileEditCard.vue'
 import Tilbake from '~/components/Tilbake.vue'
 
 const route = useRoute()

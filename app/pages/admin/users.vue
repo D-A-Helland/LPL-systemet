@@ -79,7 +79,7 @@ const deleteUser = async (id: number) => {
           <UButton
             size="xs"
             icon="i-heroicons-pencil-square"
-            :to="`/admin/users/${row.original.id}`"
+            :to="`/admin/user/${row.original.id}`"
             variant="soft"
           />
 

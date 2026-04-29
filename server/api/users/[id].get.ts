@@ -8,7 +8,9 @@ export default defineEventHandler(async (event) => {
     select: {
       id: true,
       navn: true,
-      // add fields you want to show
+      tlf: true,
+      epost: true,
+      rolle: true,
     },
   })
 
