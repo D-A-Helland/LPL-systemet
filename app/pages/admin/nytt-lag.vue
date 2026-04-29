@@ -1,6 +1,11 @@
 <script setup>
-const navn = ref('')
-const klasse = ref('')
+import { ref } from 'vue'
+
+const form = ref({
+  navn: '',
+  klasse: '',
+})
+
 const message = ref('')
 const error = ref('')
 
@@ -9,56 +14,76 @@ const submit = async () => {
   error.value = ''
 
   try {
-    const res = await $fetch('/api/admin/lag', {
+    await $fetch('/api/admin/lag', {
       method: 'POST',
-      body: {
-        navn: navn.value,
-        klasse: klasse.value
-      }
+      body: form.value,
     })
 
-    message.value = 'Lag oprettet!'
-    navn.value = ''
-    klasse.value = ''
+    message.value = 'Lag opprettet!'
+
+    form.value = {
+      navn: '',
+      klasse: '',
+    }
   } catch (e) {
     console.error(e)
-
     error.value = e?.data?.statusMessage || 'Noe gikk galt'
   }
 }
 </script>
 
 <template>
-  <div style="max-width: 400px; margin: auto;">
-    <h1>Nytt lag</h1>
+  <UContainer class="flex justify-center items-center min-h-[70vh]">
+    <UCard class="w-full max-w-sm">
+      <div class="space-y-6">
+        <h1 class="text-2xl font-bold flex items-center gap-2">
+          <UIcon name="i-heroicons-user-group" />
+          Nytt lag
+        </h1>
 
-    <form @submit.prevent="submit">
-      <div>
-        <label>Lagnavn</label>
-        <input
-          v-model="navn"
-          type="text"
-          placeholder="Lagnavn"
-          required
-        />
+        <UForm
+          :state="form"
+          @submit="submit"
+          class="space-y-4"
+        >
+          <UFormField label="Lagnavn">
+            <UInput
+              v-model="form.navn"
+              placeholder="Lagnavn"
+              icon="i-lucide-users"
+            />
+          </UFormField>
+
+          <UFormField label="Klasse">
+            <UInput
+              v-model="form.klasse"
+              placeholder="Klasse"
+              icon="i-lucide-layers"
+            />
+          </UFormField>
+
+          <UButton
+            block
+            type="submit"
+          >
+            Opprett lag
+          </UButton>
+        </UForm>
+
+        <p
+          v-if="message"
+          class="text-green-500 text-sm"
+        >
+          {{ message }}
+        </p>
+
+        <p
+          v-if="error"
+          class="text-red-500 text-sm"
+        >
+          {{ error }}
+        </p>
       </div>
-
-      <div style="margin-top: 10px;">
-        <label>Klasse</label>
-        <input
-          v-model="klasse"
-          type="text"
-          placeholder="Klasse"
-          required
-        />
-      </div>
-
-      <button type="submit" style="margin-top: 15px;">
-        Oprett lag
-      </button>
-    </form>
-
-    <p v-if="message" style="color: green;">{{ message }}</p>
-    <p v-if="error" style="color: red;">{{ error }}</p>
-  </div>
+    </UCard>
+  </UContainer>
 </template>
