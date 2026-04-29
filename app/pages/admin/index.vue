@@ -14,10 +14,10 @@ const items = [
     to: '/admin/users',
   },
   {
-    title: 'Etellerannet',
-    description: 'Denne er her for å få symmetri',
+    title: 'Nytt Lag',
+    description: 'Registrer ett nytt lag til LPL',
     icon: 'i-heroicons-link',
-    to: '/admin',
+    to: '/admin/nytt-lag',
   },
 ]
 </script>
