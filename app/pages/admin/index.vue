@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
 const items = [
   {
     title: 'Sett priser',
     description: 'Se oversikt over kamper',
-    icon: 'i-heroicons-flag',
+    icon: 'i-heroicons-ticket',
     to: '/admin/pris-setter',
   },
   {
@@ -16,7 +15,7 @@ const items = [
   {
     title: 'Nytt Lag',
     description: 'Registrer ett nytt lag til LPL',
-    icon: 'i-heroicons-link',
+    icon: 'i-heroicons-user-group',
     to: '/admin/nytt-lag',
   },
 ]
