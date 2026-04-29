@@ -10,13 +10,12 @@
         :user="{
           name: user.navn,
           email: user.epost,
-          phone:user.tlf,
+          phone: user.tlf,
           avatar: pravatar,
           role: user.rolle,
         }"
         :button="`Oppdater bruker`"
       />
-      <p>{{ user }}</p>
     </div>
     <div v-else>Loading...</div>
   </UContainer>
