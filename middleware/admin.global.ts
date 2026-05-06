@@ -1,13 +1,18 @@
 export default defineNuxtRouteMiddleware(async (to) => {
     if (!to.path.startsWith('/admin')) return
 
-    const { data: user } = await useFetch('/api/me')
+    console.log('ADMIN CHECK')
 
-    if (!user.value) {
+    try {
+        const user = await $fetch('/api/auth/me')
+
+        console.log('USER:', user)
+
+        if (user.rolle !== 'admin') {
+            return navigateTo('/')
+        }
+    } catch (e) {
+        console.log('NOT LOGGED IN')
         return navigateTo('/login')
-    }
-
-    if (user.value.rolle !== 'admin') {
-        return navigateTo('/')
     }
 })

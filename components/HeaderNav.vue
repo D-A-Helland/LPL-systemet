@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { type NavigationMenuItem } from '@nuxt/ui'
 
-const { data: user } = await useFetch('/api/me')
+const { data: user } = await useFetch('/api/auth/me')
 
 const links = computed<NavigationMenuItem[][]>(() => [
   [
